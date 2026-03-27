@@ -1,0 +1,390 @@
+[
+  {
+    "url": "https://practicetestautomation.com/",
+    "timestamp": "2026-03-27T23:10:13.604844",
+    "model_used": "claude",
+    "elements_found": 31,
+    "tests_generated": 30,
+    "tests_passed": 22,
+    "tests_failed": 8,
+    "failure_rate": 26.67,
+    "generation_time_seconds": 28.15,
+    "execution_time_seconds": 35.85,
+    "element_fingerprints": [
+      {
+        "element_type": "input",
+        "id": null,
+        "name": "data[form_id]",
+        "placeholder": null,
+        "input_type": "hidden",
+        "tag": "input"
+      },
+      {
+        "element_type": "input",
+        "id": null,
+        "name": "token",
+        "placeholder": null,
+        "input_type": "hidden",
+        "tag": "input"
+      },
+      {
+        "element_type": "input",
+        "id": null,
+        "name": "api_version",
+        "placeholder": null,
+        "input_type": "hidden",
+        "tag": "input"
+      },
+      {
+        "element_type": "input",
+        "id": null,
+        "name": "endpoint",
+        "placeholder": null,
+        "input_type": "hidden",
+        "tag": "input"
+      },
+      {
+        "element_type": "input",
+        "id": null,
+        "name": "mailpoet_method",
+        "placeholder": null,
+        "input_type": "hidden",
+        "tag": "input"
+      },
+      {
+        "element_type": "input",
+        "id": null,
+        "name": "data[email]",
+        "placeholder": null,
+        "input_type": "email",
+        "tag": "input"
+      },
+      {
+        "element_type": "input",
+        "id": "form_first_name_7",
+        "name": "data[form_field_OTlkMTBlNjFjOGUwX2ZpcnN0X25hbWU=]",
+        "placeholder": "Name *",
+        "input_type": "text",
+        "tag": "input"
+      },
+      {
+        "element_type": "input",
+        "id": "form_email_7",
+        "name": "data[form_field_ODhhN2IwZjQ3NTMzX2VtYWls]",
+        "placeholder": "Email Address *",
+        "input_type": "email",
+        "tag": "input"
+      },
+      {
+        "element_type": "input",
+        "id": null,
+        "name": null,
+        "placeholder": null,
+        "input_type": "submit",
+        "tag": "input"
+      },
+      {
+        "element_type": "button",
+        "id": null,
+        "name": null,
+        "text": "",
+        "tag": "button"
+      },
+      {
+        "element_type": "button",
+        "id": "toggle-navigation",
+        "name": "toggle-navigation",
+        "text": "open menu",
+        "tag": "button"
+      },
+      {
+        "element_type": "link",
+        "href": "#main-container",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://practicetestautomation.com/",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://practicetestautomation.com/",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://practicetestautomation.com/practice/",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://practicetestautomation.com/courses/",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://practicetestautomation.com/blog/",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://practicetestautomation.com/contact/",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://practicetestautomation.com/courses/",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://www.udemy.com/course/xpath-locators-for-selenium/?referralCode=ACB28329B5AC2333DDCC",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://www.udemy.com/course/selenium-for-beginners/?referralCode=A21BE51035C15406EFA4",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://practicetestautomation.com/blog/",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://practicetestautomation.com/practice/",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://practicetestautomation.com/blog/",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://practicetestautomation.com/courses/",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://practicetestautomation.com/privacy-policy/",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://practicetestautomation.com/",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://practicetestautomation.com/privacy-policy/",
+        "tag": "a"
+      }
+    ],
+    "parsed_summary": {
+      "title": "Practice Test Automation | Learn Selenium WebDriver",
+      "num_links": 17,
+      "num_inputs": 9,
+      "num_buttons": 2,
+      "num_forms": 1,
+      "num_images": 2,
+      "num_selects": 0
+    }
+  },
+  {
+    "url": "https://practicetestautomation.com/",
+    "timestamp": "2026-03-27T23:25:58.806275",
+    "model_used": "claude",
+    "elements_found": 31,
+    "tests_generated": 30,
+    "tests_passed": 21,
+    "tests_failed": 9,
+    "failure_rate": 30.0,
+    "generation_time_seconds": 28.5,
+    "execution_time_seconds": 26.49,
+    "element_fingerprints": [
+      {
+        "element_type": "input",
+        "id": null,
+        "name": "data[form_id]",
+        "placeholder": null,
+        "input_type": "hidden",
+        "tag": "input"
+      },
+      {
+        "element_type": "input",
+        "id": null,
+        "name": "token",
+        "placeholder": null,
+        "input_type": "hidden",
+        "tag": "input"
+      },
+      {
+        "element_type": "input",
+        "id": null,
+        "name": "api_version",
+        "placeholder": null,
+        "input_type": "hidden",
+        "tag": "input"
+      },
+      {
+        "element_type": "input",
+        "id": null,
+        "name": "endpoint",
+        "placeholder": null,
+        "input_type": "hidden",
+        "tag": "input"
+      },
+      {
+        "element_type": "input",
+        "id": null,
+        "name": "mailpoet_method",
+        "placeholder": null,
+        "input_type": "hidden",
+        "tag": "input"
+      },
+      {
+        "element_type": "input",
+        "id": null,
+        "name": "data[email]",
+        "placeholder": null,
+        "input_type": "email",
+        "tag": "input"
+      },
+      {
+        "element_type": "input",
+        "id": "form_first_name_7",
+        "name": "data[form_field_OTlkMTBlNjFjOGUwX2ZpcnN0X25hbWU=]",
+        "placeholder": "Name *",
+        "input_type": "text",
+        "tag": "input"
+      },
+      {
+        "element_type": "input",
+        "id": "form_email_7",
+        "name": "data[form_field_ODhhN2IwZjQ3NTMzX2VtYWls]",
+        "placeholder": "Email Address *",
+        "input_type": "email",
+        "tag": "input"
+      },
+      {
+        "element_type": "input",
+        "id": null,
+        "name": null,
+        "placeholder": null,
+        "input_type": "submit",
+        "tag": "input"
+      },
+      {
+        "element_type": "button",
+        "id": null,
+        "name": null,
+        "text": "",
+        "tag": "button"
+      },
+      {
+        "element_type": "button",
+        "id": "toggle-navigation",
+        "name": "toggle-navigation",
+        "text": "open menu",
+        "tag": "button"
+      },
+      {
+        "element_type": "link",
+        "href": "#main-container",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://practicetestautomation.com/",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://practicetestautomation.com/",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://practicetestautomation.com/practice/",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://practicetestautomation.com/courses/",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://practicetestautomation.com/blog/",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://practicetestautomation.com/contact/",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://practicetestautomation.com/courses/",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://www.udemy.com/course/xpath-locators-for-selenium/?referralCode=ACB28329B5AC2333DDCC",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://www.udemy.com/course/selenium-for-beginners/?referralCode=A21BE51035C15406EFA4",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://practicetestautomation.com/blog/",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://practicetestautomation.com/practice/",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://practicetestautomation.com/blog/",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://practicetestautomation.com/courses/",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://practicetestautomation.com/privacy-policy/",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://practicetestautomation.com/",
+        "tag": "a"
+      },
+      {
+        "element_type": "link",
+        "href": "https://practicetestautomation.com/privacy-policy/",
+        "tag": "a"
+      }
+    ],
+    "parsed_summary": {
+      "title": "Practice Test Automation | Learn Selenium WebDriver",
+      "num_links": 17,
+      "num_inputs": 9,
+      "num_buttons": 2,
+      "num_forms": 1,
+      "num_images": 2,
+      "num_selects": 0
+    }
+  }
+]

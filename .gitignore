@@ -1,0 +1,13 @@
+# API keys - never upload these
+.env
+
+# Python virtual environment - too large for GitHub
+venv/
+
+# Auto-generated files
+__pycache__/
+*.pyc
+generated_test.py
+
+# VS Code settings
+.vscode/

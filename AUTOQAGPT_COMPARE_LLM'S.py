@@ -4,6 +4,7 @@ import json
 import time
 import requests
 import autopep8
+from logger import build_record, save_record
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -18,16 +19,23 @@ from anthropic import Anthropic
 # Load Environment Variables
 
 load_dotenv()
-openai.api_key = "Paste your OpenAI API key here "
-ANTHROPIC_KEY = "Paste your ANTHROPIC API key here "
-XAI_API_KEY = "Paste your XAI API key here "
+openai.api_key = os.getenv("OPENAI_API_KEY", "")
+ANTHROPIC_KEY = os.getenv("ANTHROPIC_KEY", "")
+XAI_API_KEY = os.getenv("XAI_API_KEY", "")
 
 
 
 # Fetch HTML content
 
 def fetch_html(url):
-    response = requests.get(url)
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/120.0.0.0 Safari/537.36"
+        )
+    }
+    response = requests.get(url, headers=headers)
     response.raise_for_status()
     return BeautifulSoup(response.text, "html.parser")
 
@@ -261,7 +269,26 @@ def execute_selenium_code(selenium_code):
     print("\n Selenium Test Script Saved as generated_test.py")
 
     print("\n Running Selenium Tests...\n")
-    os.system("python generated_test.py")
+
+    # Capture the output of the test run so we can count passes and fails
+    import subprocess
+    result = subprocess.run(
+        ["python", "generated_test.py"],
+        capture_output=True,
+        text=True
+    )
+
+    # Print the output to console so you still see it as before
+    print(result.stdout)
+    if result.stderr:
+        print("[STDERR]", result.stderr[:500])
+
+    # Count how many tests passed and failed from the console output
+    passed = result.stdout.count("Passed")
+    failed = result.stdout.count("Failed")
+
+    return passed, failed
+
 
 
 # MAIN ENTRY POINT
@@ -284,7 +311,24 @@ def main():
     if selenium_code:
         print("\n--- Generated Code (preview) ---\n")
         print(selenium_code[:800], "...\n")
-        execute_selenium_code(selenium_code)
+
+        # Start timing the execution
+        exec_start = time.time()
+        tests_passed, tests_failed = execute_selenium_code(selenium_code)
+        exec_duration = time.time() - exec_start
+
+        # Build and save the training record
+        record = build_record(
+            url=url,
+            model_used=model_choice,
+            parsed_data=parsed_data,
+            generation_time=duration,
+            execution_time=exec_duration,
+            tests_passed=tests_passed,
+            tests_failed=tests_failed
+        )
+        save_record(record)
+
     else:
         print(" Failed to generate Selenium code.")
 
