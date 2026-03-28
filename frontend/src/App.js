@@ -133,12 +133,12 @@ export default function App() {
           <div className="options-row">
             {MODELS.map((m) => (
               <button
-                key={m.id}
-                className={`option-btn ${model === m.id ? "selected" : ""}`}
-                onClick={() => setModel(m.id)}
-              >
-                {m.label}
-              </button>
+                  className="action-btn run-btn"
+                  title="Download the script and run it locally on your machine"
+                  onClick={() => setRunOutput("To run this script: download it and execute locally on your machine where Chrome is installed.\n\nFor Python: python autoqallms_test.py\nFor JavaScript: node autoqallms_test.js\nFor Java: javac autoqallms_test.java && java AutoQATest")}
+                >
+                  Run Locally
+                </button>
             ))}
           </div>
         </div>
