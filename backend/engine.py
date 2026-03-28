@@ -117,6 +117,18 @@ def build_prompt(url: str, parsed_data: dict, framework: str) -> str:
             f"- Each test must be independent.\n"
             f"- Output must be syntactically valid JavaScript.\n"
         )
+    elif framework == "selenium_java":
+        return base + (
+            f"- Generate Selenium 4 Java test code.\n"
+            f"- Use JUnit 5 annotations: @Test, @BeforeEach, @AfterEach.\n"
+            f"- Import org.openqa.selenium.*, org.openqa.selenium.By, org.openqa.selenium.chrome.ChromeDriver.\n"
+            f"- Use WebDriver driver and ChromeDriver.\n"
+            f"- Use driver.findElement(By.id()), By.name(), By.xpath(), By.cssSelector().\n"
+            f"- Wrap each test in try-catch and print 'Test X Passed' or 'Test X Failed'.\n"
+            f"- Include @BeforeEach to initialise ChromeDriver and @AfterEach to quit.\n"
+            f"- Output must be a complete, syntactically valid Java class named AutoQATest.\n"
+            f"- Do NOT include markdown or explanatory text.\n"
+        )
     else:
         return base
 

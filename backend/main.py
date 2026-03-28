@@ -52,10 +52,10 @@ async def generate(request: GenerateRequest):
             detail="Model must be gpt4, claude, or grok"
         )
 
-    if request.framework not in ["selenium_python", "playwright_js"]:
+    if request.framework not in ["selenium_python", "playwright_js", "selenium_java"]:
         raise HTTPException(
             status_code=400,
-            detail="Framework must be selenium_python or playwright_js"
+            detail="Framework must be selenium_python, playwright_js, or selenium_java"
         )
 
     try:
@@ -91,7 +91,12 @@ async def run_script(request: RunRequest):
     """
     try:
         # Choose file extension based on framework
-        ext = ".js" if request.framework == "playwright_js" else ".py"
+        if request.framework == "playwright_js":
+            ext = ".js"
+        elif request.framework == "selenium_java":
+            ext = ".java"
+        else:
+            ext = ".py"
 
         # Write script to a temporary file
         with tempfile.NamedTemporaryFile(
@@ -105,6 +110,20 @@ async def run_script(request: RunRequest):
         # Run the script and capture output
         if request.framework == "playwright_js":
             cmd = ["node", tmp_path]
+        elif request.framework == "selenium_java":
+            # Java requires compilation first
+            compile_result = subprocess.run(
+                ["javac", tmp_path],
+                capture_output=True,
+                text=True
+            )
+            if compile_result.returncode != 0:
+                return {
+                    "success": False,
+                    "output": f"Java compilation failed:\n{compile_result.stderr}"
+                }
+            class_dir = os.path.dirname(tmp_path)
+            cmd = ["java", "-cp", class_dir, "AutoQATest"]
         else:
             cmd = ["python", tmp_path]
 

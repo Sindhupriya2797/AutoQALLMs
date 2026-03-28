@@ -15,6 +15,7 @@ const MODELS = [
 const FRAMEWORKS = [
   { id: "selenium_python", label: "Selenium Python" },
   { id: "playwright_js", label: "Playwright JavaScript" },
+  { id: "selenium_java", label: "Selenium Java" },
 ];
 
 export default function App() {
@@ -65,7 +66,9 @@ export default function App() {
   };
 
   const handleDownload = () => {
-    const ext = framework === "playwright_js" ? "js" : "py";
+    let ext = "py";
+    if (framework === "playwright_js") ext = "js";
+    if (framework === "selenium_java") ext = "java";
     const filename = `autoqallms_test.${ext}`;
     const blob = new Blob([result.script], { type: "text/plain" });
     const link = document.createElement("a");
@@ -90,7 +93,9 @@ export default function App() {
     }
   };
 
-  const language = framework === "playwright_js" ? "javascript" : "python";
+  let language = "python";
+  if (framework === "playwright_js") language = "javascript";
+  if (framework === "selenium_java") language = "java";
 
   const formatRunOutput = (output) => {
     return output.split("\n").map((line, i) => {
