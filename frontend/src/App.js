@@ -18,6 +18,12 @@ const FRAMEWORKS = [
   { id: "selenium_java", label: "Selenium Java" },
 ];
 
+const FRAMEWORK_LABELS = {
+  selenium_python: "Selenium Python",
+  playwright_js: "Playwright JS",
+  selenium_java: "Selenium Java",
+};
+
 export default function App() {
   const [url, setUrl] = useState("");
   const [model, setModel] = useState("claude");
@@ -27,7 +33,6 @@ export default function App() {
   const [error, setError] = useState(null);
   const [copied, setCopied] = useState(false);
   const [runOutput, setRunOutput] = useState(null);
-  const [running, setRunning] = useState(false);
 
   const handleGenerate = async () => {
     if (!url.trim()) return;
@@ -77,20 +82,18 @@ export default function App() {
     link.click();
   };
 
-  const handleRun = async () => {
-    setRunning(true);
-    setRunOutput(null);
-    try {
-      const response = await axios.post(`${API_URL}/run`, {
-        script: result.script,
-        framework,
-      });
-      setRunOutput(response.data.output || "No output returned.");
-    } catch (err) {
-      setRunOutput("Run failed: " + (err.response?.data?.detail || err.message));
-    } finally {
-      setRunning(false);
-    }
+  const handleRunInfo = () => {
+    let cmd = "python autoqallms_test.py";
+    if (framework === "playwright_js") cmd = "node autoqallms_test.js";
+    if (framework === "selenium_java") cmd = "javac autoqallms_test.java && java AutoQATest";
+
+    setRunOutput(
+      "To run this script locally on your machine:\n\n" +
+      "1. Click Download to save the script\n" +
+      "2. Open your terminal\n" +
+      `3. Run: ${cmd}\n\n` +
+      "Note: Chrome browser must be installed on your machine."
+    );
   };
 
   let language = "python";
@@ -133,12 +136,12 @@ export default function App() {
           <div className="options-row">
             {MODELS.map((m) => (
               <button
-                  className="action-btn run-btn"
-                  title="Download the script and run it locally on your machine"
-                  onClick={() => setRunOutput("To run this script: download it and execute locally on your machine where Chrome is installed.\n\nFor Python: python autoqallms_test.py\nFor JavaScript: node autoqallms_test.js\nFor Java: javac autoqallms_test.java && java AutoQATest")}
-                >
-                  Run Locally
-                </button>
+                key={m.id}
+                className={`option-btn ${model === m.id ? "selected" : ""}`}
+                onClick={() => setModel(m.id)}
+              >
+                {m.label}
+              </button>
             ))}
           </div>
         </div>
@@ -189,12 +192,14 @@ export default function App() {
           <div className="stats-bar">
             <div className="stat">
               <span className="stat-label">Model</span>
-              <span className="stat-value">{result.model_used?.toUpperCase()}</span>
+              <span className="stat-value">
+                {result.model_used?.toUpperCase()}
+              </span>
             </div>
             <div className="stat">
               <span className="stat-label">Framework</span>
               <span className="stat-value">
-                {result.framework === "playwright_js" ? "Playwright JS" : "Selenium Python"}
+                {FRAMEWORK_LABELS[result.framework] || result.framework}
               </span>
             </div>
             <div className="stat">
@@ -223,10 +228,9 @@ export default function App() {
                 </button>
                 <button
                   className="action-btn run-btn"
-                  onClick={handleRun}
-                  disabled={running}
+                  onClick={handleRunInfo}
                 >
-                  {running ? "Running..." : "Run"}
+                  How to Run
                 </button>
               </div>
             </div>
@@ -245,7 +249,7 @@ export default function App() {
             {/* Run Output */}
             {runOutput && (
               <div className="run-results">
-                <h3>Test Results</h3>
+                <h3>How to Run</h3>
                 <div className="run-output">
                   {formatRunOutput(runOutput)}
                 </div>
